@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Love calculator</title>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+
+	
+</head>
+<body>
+					<div class="hero">
+			
+				<div class="sub-hero">
+				
+				
+				
+			     	<form class="input-form" id="register" th:action="@{/register}" th:object="${users}"  th:method="post">
+						<div id="error"></div>
+						<span th:utext="${message}"></span>
+						
+						
+						<input type="text" id="username" class="input-field" placeholder="Username" th:field="*{username}">
+						<div class="error-field">
+						<span  th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></span><br>
+						</div>
+						<input type="password" id="password"  class="input-field" placeholder="Password" th:field="*{password}">
+						<div class="error-field">
+						<span th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span><br>
+						</div>
+						<input type="text" id="firstname" class="input-field" placeholder="Firstname" th:field="*{firstname}">
+						<div class="error-field">
+						<span th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}"></span><br>
+						</div>
+						<input type="text" id="lastname" class="input-field" placeholder="Lastname" th:field="*{lastname}">
+						<div class="error-field">
+						<span th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}"></span><br>
+						</div>
+						<input type="checkbox"class="checkbox-field" value="true" name="cbox" required><span>I agree that this is only for fun </span>
+						<div class="error-field">
+						<span th:utext="${conditionerror}"></span>
+						</div>
+						<input type="submit" class="submit-btn" value="Sign-up">
+					</form>
+					</div>
+					</div>
+					
+</body>
+</html>

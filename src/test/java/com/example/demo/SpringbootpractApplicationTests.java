@@ -45,16 +45,7 @@ class SpringbootpractApplicationTests {
 //	@Test
 	public void histo() {
 		
-		History h = new History();
-	//	h.setUser_id(2);
-		//h.setId(2);
 		
-		h.setCrushname("Harden");
-		//History saves = 
-				hrepo.save(h);
-		//History existUser = em.find(History.class, saves.getUser_id());
-		
-		//assertThat(existUser.getName()).isEqualTo(h.getName());
 		
 	}
 //	@Test

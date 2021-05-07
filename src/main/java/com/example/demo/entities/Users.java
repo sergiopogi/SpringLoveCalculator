@@ -4,11 +4,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "practcrud")
 public class Users {
 
 	@Id
@@ -17,13 +17,12 @@ public class Users {
 
 	@NotBlank(message = "*Invalid username or already taken")
 	private String username;
-	@NotBlank
+	@Size(min = 8 , message = "*Password must contains 8 characters")
 	private String password; 
-	
-//	@Valid
-//	@ManyToOne
-//	private History history;
-//	
+	@NotBlank(message = "*Firstname must not be blank")
+	private String firstname;
+	@NotBlank(message = "*Lastname must not be blank")
+	private String lastname;
 	
 	public Integer getId() {
 		return id;
@@ -43,9 +42,22 @@ public class Users {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	public String getFirstname() {
+		return firstname;
+	}
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
+	}
+	public String getLastname() {
+		return lastname;
+	}
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
+	}
 	@Override
 	public String toString() {
-		return "Users [id=" + id + ", username=" + username + ", password=" + password + "]";
+		return "Users [id=" + id + ", username=" + username + ", password=" + password + ", firstname=" + firstname
+				+ ", lastname=" + lastname + "]";
 	}
 	
 

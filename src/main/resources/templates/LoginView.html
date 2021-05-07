@@ -1,23 +1,40 @@
 <!DOCTYPE html>
 <html  xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+	<title>Love calculator</title>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">	
 </head>
 <body>
-	<h1>Please Login</h1>
-	 <div style="text-align:center; font-size:20px; color:green; font-weight:bold"> 
+
+		<div class="hero">
+			
+				<div class="sub-hero">
+					<div id="error"></div>
+					<form class="input-form" id="login" action="/login" method="post">
+					
+						<div class="login-error" th:if="${param.error}"> Invalid username or password</div>
+						<div class="register-success" th:utext="${message}"></div>
+						
+						<input type="text" id="username" class="input-field" placeholder="Username" name="username">
+						<input type="password" id="password" class="input-field" placeholder="Password" name="password">
+						
+						<input type="checkbox" value="true" name="check-box" class="checkbox-field"><span>I agree that this is only for fun </span>
+						<input type="submit" class="submit-btn" value="Sign-in"><br>
+						
+						<span class="span">No account yet ? <a th:href="@{/sign-up}">register here</a></span>
+					</form>
+					
+
+					
+					
+				</div>
+
+
+		</div>
+
 		
-   
-		<form action="/login" method="post" >
-		 
-         <span th:utext="${message}"></span> <br>
-		<label>Username :</label> <input type="text" id="username" name="username"><br>
-		<label>Password :</label> <input type="password" id="password" name="password"><br>
-		<input type="submit" value="SUBMIT">
-		</form>
-		
-		 </div>
-		<a th:href="@{/sign-up}">Sign-Up</a>
+
+
+
 </body>
 </html>

@@ -3,24 +3,26 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">	
 </head>
 <body>
 <h3 th:text=" 'Welcome ' + ${#authentication.getPrincipal().getUsername()}"></h3>
 
 	<div align="center">
 	
-		<form th:action="@{/submit}" th:object="${history}" method="post">
-		<label>NAME :</label><input type="text" th:field="*{name}">
+		<form   th:action="@{/submit}" th:object="${history}" method="post">
+		<input class="input-field"  type="text" th:field="*{name}" placeholder="Name">
 							<span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>	<br>
 							
-		<label>CRUSHNAME :</label><input type="text" th:field="*{crushname}">
+		<input class="input-field"  type="text" th:field="*{crushname}" placeholder="Crushname">
 								<span th:if="${#fields.hasErrors('crushname')}" th:errors="*{crushname}"></span><br>
-		<input type="submit" value="SUBMIT">
+		<input type="submit" class="submit-btn" value="SUBMIT">
 		</form>
+		</div>
 	
-	</div>
+	
 
-<a th:href="@{/history}">History</a>
+<a th:href="@{/history}">History</a><br>
 <a th:href="@{/logout}">Logout</a>
 </body>
 </html>

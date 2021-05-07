@@ -10,8 +10,9 @@ import com.example.demo.entities.History;
 @Repository
 public interface HistoryRepository extends JpaRepository<History, Integer> {
 
-	public List<History>  findHistoryByUsers(int id);
+	public List<History> findByUserid(int id);
 	public void deleteById(int id);
-	public void deleteByName(String name);
+	
+	
 	
 }

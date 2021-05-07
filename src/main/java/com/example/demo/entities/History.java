@@ -1,20 +1,16 @@
 package com.example.demo.entities;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
 
 @Entity
-@Table(name = "hisory1")
 public class History {
 
-	@Column(name = "User_ID")
-	private Integer users;
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
@@ -22,49 +18,59 @@ public class History {
 	private String name;
 	@NotBlank
 	private String crushname;
+
 	private String result;
 	
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public String getCrushname() {
-		return crushname;
-	}
-	public void setCrushname(String crushname) {
-		this.crushname = crushname;
-	}
-	
+	@ManyToOne
+	@JoinColumn(name = "userid" , insertable = false , updatable = false)
+	private Users user;
+	private Integer userid;
 
-	
 	public Integer getId() {
 		return id;
 	}
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name.replaceAll(" ", "");
+	}
+
+	public String getCrushname() {
+		return crushname;
+	}
+
+	public void setCrushname(String crushname) {
+		this.crushname = crushname.replaceAll(" ", "");
+	}
+
 	public String getResult() {
 		return result;
 	}
+
 	public void setResult(String result) {
 		this.result = result;
 	}
-	public Integer getUsers() {
-		return users;
-	}
-	public void setUsers(Integer users) {
-		this.users = users;
-	}
-	
 
-	
 	@Override
 	public String toString() {
-		return "History [users=" + users + ", id=" + id + ", name=" + name + ", crushname=" + crushname + ", result="
-				+ result + "]";
+		return "History [id=" + id + ", name=" + name + ", crushname=" + crushname + ", result=" + result + "]";
 	}
+
+	public Integer getUserid() {
+		return userid;
+	}
+
+	public void setUserid(Integer userid) {
+		this.userid = userid;
+	}
+	
+	
 	
 }
